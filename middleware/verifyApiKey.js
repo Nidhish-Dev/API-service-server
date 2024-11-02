@@ -1,4 +1,4 @@
-const User = require('../models/User'); 
+const User = require('../models/User');
 
 exports.verifyApiKey = async (req, res, next) => {
     const apiKey = req.query.apiKey; 
@@ -10,17 +10,21 @@ exports.verifyApiKey = async (req, res, next) => {
 
     try {
         const user = await User.findOne({ 'apiKeys.key': apiKey });
-        
-        console.log('User found:', user); 
+
+        // Debugging: Log all users or specific keys if necessary
+        const allUsers = await User.find();
+        console.log('All users:', allUsers);
 
         if (!user) {
+            console.log('Invalid API key:', apiKey);
             return res.status(403).json({ error: 'Invalid API key' });
         }
 
+        // Optionally, attach user info to the request
         req.user = user; 
         next();
     } catch (error) {
         console.error('Error verifying API key:', error); 
-        res.status(500).json({ error: 'Error verifying API key' });
+        return res.status(500).json({ error: 'Error verifying API key' });
     }
 };

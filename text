@@ -1,1 +1,0 @@
-curl -X GET "http://localhost:8000/api/hello?apiKey=42da945d-19c7-4220-8edd-9038e19afb41" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MWZhMGU5ZjhkZGE1Nzg0MWE0MzgyYiIsImlhdCI6MTczMDU1Mzc3Mn0.G5tOYCsiSikG0FyRE0nEpJSrRZc36-g6kp8n3H1VFdQ" -H "Content-Type: application/json"
